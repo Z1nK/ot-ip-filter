@@ -17,7 +17,7 @@ uint32_t LogReader::ipStringToUint32(const std::string& ipStr) {
         throw std::out_of_range("Octet value out of range");
       }
       result = (result << 8) | static_cast<uint8_t>(value);
-      octet++;
+      ++octet;
     } catch (const std::exception& e) {
       throw std::invalid_argument("Invalid IP address: " + ipStr);
     }
@@ -44,7 +44,7 @@ std::vector<uint32_t> LogReader::read(std::istream& input) {
   int lineNumber = 0;
 
   while (std::getline(input, line)) {
-    lineNumber++;
+    ++lineNumber;
     
     if (line.empty()) {
       continue;
