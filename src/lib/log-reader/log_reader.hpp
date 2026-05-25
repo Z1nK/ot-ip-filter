@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <string>
 #include <vector>
+#include <string_view>
 
 class LogReader {
  public:
@@ -28,7 +29,14 @@ class LogReader {
    * @param ipStr IP address string (e.g., "192.168.1.1")
    * @return IP address as uint32_t in host byte order
    */
-  static uint32_t ipStringToUint32(const std::string& ipStr);
+  static uint32_t ipStringToUint32_slow(const std::string& ipStr);
+
+  /**
+   * Convert IPv4 address string to uint32_t
+   * @param ipStr IP address string (e.g., "192.168.1.1")
+   * @return IP address as uint32_t in host byte order
+   */
+  static uint32_t ipStringToUint32(std::string_view ipStr);
 
   /**
    * Convert uint32_t IPv4 address to dotted-decimal string
